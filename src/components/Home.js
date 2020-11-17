@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import {getRecipes} from '../api/jsonPlaceholder';
 import RecipeCard from './RecipeCard';
 import Cover from "../images/healthyfood.jpg";
+import Loader from "../images/loader.gif";
 
 function Home() {
   const [recipes, setRecipes] = useState([]);
@@ -69,7 +70,7 @@ function Home() {
           </div>
           <div className="row mb-3">
             <input className="form-control mr-sm-2 col-md-6" type="search" placeholder="Search Recipes" aria-label="Search" id="searchRecipes" name="recipeQuery" onBlur={onInputChange}/>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onClick={onSubmit}>Search</button>
+            <button class="btn btn-outline-info my-2 my-sm-0" type="submit" onClick={onSubmit}>Search</button>
           </div>
           <div className="row">
                 <input className="form-control mr-sm-2 col-md-6" type="search" placeholder="Search by Ingredients" aria-label="Search" id="searchByIngredients"/>
@@ -94,7 +95,7 @@ function Home() {
                    } */}
                </ul>
                {
-                   !recipes.length && <img src="images/loader.gif" />
+                   !recipes.length && <img src={Loader} />
                }
                </div>
                <div className="col-md-8">

@@ -2,7 +2,9 @@ import React, {useState, useEffect} from 'react';
 
 import {getRecipes} from '../api/jsonPlaceholder';
 import RecipeCard from './RecipeCard';
+
 import Cover from "../images/healthyfood.jpg";
+import Loader from "../images/loader.gif";
 
 function AllRecipes() {
   const [recipes, setRecipes] = useState([]);
@@ -22,26 +24,23 @@ function AllRecipes() {
   },[]);
 
 
-  return (
-    <div className="container-fluid">
-     <div className="jumbotron text-center" style={{ fontFamily: "fantasy", color: "#e64e40", fontWeight: "900", textShadow: "2px 2px black", height: "300px", backgroundImage: `url(${Cover})`, backgroundSize: "cover", backgroundRepeat: "no-repeat"}}>
-          <div className="container">
-            <h1 className="display-4 pt-5">All Recipes</h1>
-          </div>
-        </div>  
-      <div className="container-fluid">
-        <ul>
-         <li className="list-group-item active">Recipes</li>
-                   {
-                       recipes.length && recipes.map(({recipe}) => <li key={recipe.uri} 
-                                              className="list-group-item">{recipe.label}</li>)
-                   }
-               </ul>     
-      </div>
-        {
-          !recipes.length && <img src="../imag />
-        }
-    </div>  
+  if(!recipes.length){
+    return 'Loading Recipes, Please Wait...'
+  }
+
+  return (    
+        <>
+        <div class="alert alert-warning" role="alert">
+            All recipes
+        </div>
+        <div className="row">
+            {
+                recipes.map(recipe => (
+                  <RecipeCard {...recipe} />                    
+                ))
+            }
+        </div>
+    </>
   );
 }
 
