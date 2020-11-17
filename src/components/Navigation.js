@@ -47,14 +47,6 @@ function Navigation(props) {
                   Saved Recipes
                   </Link>
               </li>
-              <li
-                className={`nav-item  ${props.location.pathname === "/recipecard" ? "active" : ""
-                  }`}
-              >
-                <Link className="nav-link" to="/recipecard">
-                  Recipe Card
-                  </Link>
-              </li>
             </ul>
             <ul className="navbar-nav ml-auto">
               <li

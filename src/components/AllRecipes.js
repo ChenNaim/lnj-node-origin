@@ -29,18 +29,18 @@ function AllRecipes() {
   }
 
   return (    
-        <>
-        <div class="alert alert-warning" role="alert">
+        <div>
+          <div class="alert alert-info" role="alert">
             All recipes
+          </div>
+          <div className="row m-2">
+              {
+                  recipes.map(recipe => (
+                    <RecipeCard {...recipe} />                    
+                  ))
+              }
+          </div>
         </div>
-        <div className="row">
-            {
-                recipes.map(recipe => (
-                  <RecipeCard {...recipe} />                    
-                ))
-            }
-        </div>
-    </>
   );
 }
 
