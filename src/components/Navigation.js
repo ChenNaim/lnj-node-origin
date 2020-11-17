@@ -6,7 +6,7 @@ function Navigation(props) {
     <div className="navigation">
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div className="container">
-          <Link className="navbar-brand" to="/">
+          <Link className="navbar-brand" to="/" style={{fontFamily: "fantasy", color: "#e64e40"}}>
             My Recipes Book
           </Link>
           <button
@@ -20,7 +20,7 @@ function Navigation(props) {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarResponsive">
+          <div className="collapse navbar-collapse text-right" id="navbarResponsive">
             <ul className="navbar-nav ml-auto">
               <li
                 className={`nav-item  ${props.location.pathname === "/" ? "active" : ""
@@ -56,8 +56,6 @@ function Navigation(props) {
                   </Link>
               </li>
             </ul>
-          </div>
-          <div className="collapse navbar-collapse" id="navbarResponsive2">
             <ul className="navbar-nav ml-auto">
               <li
                 className={`nav-item  ${props.location.pathname === "/signup" ? "active" : ""

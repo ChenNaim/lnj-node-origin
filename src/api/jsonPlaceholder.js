@@ -1,21 +1,25 @@
-import React from 'react';
-import axios from "axios";
+import axios from 'axios';
 
-const options = {
-  method: 'POST',
-  url: 'https://mycookbook-io1.p.rapidapi.com/recipes/rapidapi',
-  headers: {
-    'content-type': 'application/xml',
-    'x-rapidapi-key': 'fd7fdf97b5msh57ebbf3b50f6af3p1c81e1jsnf90ed52d70a7',
-    'x-rapidapi-host': 'mycookbook-io1.p.rapidapi.com'
-  },
-  data: 'https://www.jamieoliver.com/recipes/vegetables-recipes/superfood-salad/'
+const getRecipes = async (query) => {
+  const requestString = `https://api.edamam.com/search?app_id=5e12ad52&app_key=a5685217c0e203a505a6c0b0d1facad9&from=0&to=40&q=${query}`;
+  const response = await axios.get(requestString);
+  return response.data;
+}
+
+export {
+  getRecipes
 };
 
-axios.request(options).then(function (response) {
-	console.log(response.data);
-}).catch(function (error) {
-	console.error(error);
-});
 
-export default jsonPlaceholder;
+// const getUsers = async () => {
+//     // return axios.get('https://jsonplaceholder.typicode.com/users')
+//     //     .then(response => response.data);
+    
+//     const response = await axios.get(`https://cors-anywhere.herokuapp.com/http://food2fork.com/api`);
+//     return response.data;
+
+// }
+
+// export {
+//     getUsers
+// };
