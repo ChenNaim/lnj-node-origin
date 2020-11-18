@@ -12,7 +12,7 @@ function App() {
             <Route path="/"  exact={true}><Home /></Route>
             <Route path="/all-recipes"><AllRecipes /></Route>
             <Route path="/recipecard"><RecipeCard /></Route>
-            <Route path="/recipepage:label"><RecipePage /></Route>
+            <Route path="/recipepage/:label"><RecipePage /></Route>
             <Route path="/savedrecipes"><SavedRecipes /></Route>
             <Route path="/signup"><SignUp /></Route>
             <Route path="/login"><Login /></Route>

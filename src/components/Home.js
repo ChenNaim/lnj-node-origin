@@ -1,10 +1,8 @@
-import React, {useState, useEffect} from 'react';
-import { Link } from 'react-router-dom';
+import React, {useState} from 'react';
 
 import {getRecipes, getRecipesByDiet} from '../api/jsonPlaceholder';
 import RecipeCard from './RecipeCard';
 import Cover from '../images/healthyfood.jpg';
-import Loader from '../images/loader.gif';
 
 function Home() {
   const [recipes, setRecipes] = useState([]);
@@ -14,22 +12,23 @@ function Home() {
     setRecipeQuery(e.target.value);
   }
 
+  const prepareRecipes = async (jsonrecipesHits) => {
+    localStorage.setItem('recipes', JSON.stringify(jsonrecipesHits));
+    setRecipes(jsonrecipesHits);
+  }
+  
   const onSubmit = async (e) => {
     e.preventDefault();
     let jsonrecipes;
     jsonrecipes = await getRecipes(recipeQuery);
-    jsonrecipes = jsonrecipes.hits;
-    setRecipes(jsonrecipes);
-    console.log(jsonrecipes);
+    prepareRecipes(jsonrecipes.hits);
   }
 
   const onSubmitDiet = async (e) => {
     e.preventDefault();
     let jsonrecipes;
     jsonrecipes = await getRecipesByDiet(e.target.innerText);
-    jsonrecipes = jsonrecipes.hits;
-    setRecipes(jsonrecipes);
-    console.log(jsonrecipes);
+    prepareRecipes(jsonrecipes.hits);
   }
 
   return (

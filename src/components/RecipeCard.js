@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
 function RecipeCard(props) {
     return (
         props.recipe && 
@@ -20,9 +19,5 @@ function RecipeCard(props) {
         </div>  
       );
     }
-    
-          
-
-  
 
 export default RecipeCard;
