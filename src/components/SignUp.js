@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 
 import Errors from './Errors';
-import validate from './validator';
+import validate from './validator'; 
+import Eye from '../images/eye.png';
 
     function SignUp() {
         const [user, setUser] = useState({
-            firstname: {value:'', required: true, minLength: 2, errors: []},
+            firstname:{value:'', required: true, minLength: 2, errors: []},
             lastname: {value:'', required: true, minLength: 2, errors: []},
             email:    {value:'', required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, errors: []},
-            password:  {value:'', required: true, minLength: 8, pattern: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/, errors: []},
-            repassword: {value:'', required: true, minLength: 8, pattern: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/, errors: []}
+            password: {value:'', required: true, minLength: 8, pattern: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/, errors: []},
         });
     
         const onInputChange = (e) => {
@@ -20,7 +20,8 @@ import validate from './validator';
                 e.target.value, 
                 user[e.target.name].required,
                 user[e.target.name].minLength,
-                user[e.target.name].pattern
+                user[e.target.name].pattern,
+                user[e.target.name].comparison,
             );
     
             setUser({
@@ -33,6 +34,7 @@ import validate from './validator';
             });
         }
     
+    
         const onSubmit = e => {
             e.preventDefault();
             
@@ -42,7 +44,8 @@ import validate from './validator';
                     user[field].value,
                     user[field].required,
                     user[field].minLength,
-                    user[field].pattern
+                    user[field].pattern,
+                    user[field].comparison,
                 );
     
                 user[field] = {
@@ -61,6 +64,12 @@ import validate from './validator';
     
             console.log(rawUser);
         }
+
+        const [passwordShown, setPasswordShown] = useState(false);
+
+        const togglePasswordVisiblity = () => {
+            setPasswordShown(passwordShown ? false : true);
+          };
        
         return (
             <div className="container-fluid mt-3">
@@ -112,11 +121,14 @@ import validate from './validator';
 
                         <div className="form-group">
                             <label>Password</label>
-                            <input type="password" className="form-control" placeholder="Enter password"
-                             name="password"
-                             defaultValue={user.password.value}
-                             onBlur={onInputChange}
-                             />
+                            <div className="input-group">
+                                <input type={passwordShown ? "text" : "password"} className="form-control" placeholder="Enter password"
+                                name="password"
+                                defaultValue={user.password.value}
+                                onBlur={onInputChange}
+                                />
+                                <a className="btn border" onClick={togglePasswordVisiblity}><img src={Eye} style={{height: "15px"}}/></a>
+                             </div>
                              <small>Password should contain at least eight characters, one number, one lowercase and one uppercase letter</small>
                              <small>
                              {
@@ -125,19 +137,19 @@ import validate from './validator';
                              </small>
                         </div>
 
-                        <div className="form-group">
+                        {/* <div className="form-group">
                             <label>Re-enter Password</label>
                             <input type="password" className="form-control" placeholder="Re-enter password"
-                             name="repassword"
-                             defaultValue={user.repassword.value}
+                             name="password2"
+                             defaultValue={user.password2.value}
                              onBlur={onInputChange}
                              />
                              <small>
                              {
-                                 <Errors errors={user.repassword.errors} />
+                                 <Errors errors={user.password2.errors} />
                              }
                              </small>
-                        </div>
+                        </div> */}
 
                         <div className="form-group">
                             <label>Recipes you would like to see</label>
@@ -205,9 +217,9 @@ import validate from './validator';
                                 </div>
                         </div>
 
-                        <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
+                        <button type="submit" className="btn btn-info btn-block">Sign Up</button>
                         <p className="forgot-password text-right">
-                            Already registered? <a href="./Login">Login</a>
+                            Already registered? <a className="text-info" href="./Login">Login</a>
                         </p>
                     </form>
                     <div className="col-md-2"></div>

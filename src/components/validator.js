@@ -1,5 +1,5 @@
 
-const validate = (name, value, required, minLength, pattern) => {
+const validate = (name, value, required, minLength, pattern, comparison) => {
     const newErrors = [];
 
     if(required){

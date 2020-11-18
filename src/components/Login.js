@@ -25,9 +25,9 @@ function Login() {
                             </div>
                         </div>
 
-                        <button type="submit" className="btn btn-primary btn-block">Submit</button>
+                        <button type="submit" className="btn btn-info btn-block">Submit</button>
                         <p className="forgot-password text-right">
-                            Forgot <a href="#">password?</a>
+                            Forgot <a className="text-info" href="#">password?</a>
                         </p>
                     </form>
                     <div className="col-md-3"></div>

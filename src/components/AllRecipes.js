@@ -3,8 +3,6 @@ import React, {useState, useEffect} from 'react';
 import {getRecipes} from '../api/jsonPlaceholder';
 import RecipeCard from './RecipeCard';
 
-import Loader from '../images/loader.gif';
-
 function AllRecipes() {
   const [recipes, setRecipes] = useState([]);
 
@@ -17,11 +15,8 @@ function AllRecipes() {
       }else{
           jsonrecipes = JSON.parse(localStorage.getItem('recipes'));
       }
-      // setTimeout(() => {
       setRecipes(jsonrecipes);
-      // }, 3000);
   },[]);
-
 
   if(!recipes.length){
     return 'Loading Recipes, Please Wait...'
@@ -39,6 +34,7 @@ function AllRecipes() {
                   ))
               }
           </div>
+          <div style={{height: "35px"}}></div>
         </div>
   );
 }
