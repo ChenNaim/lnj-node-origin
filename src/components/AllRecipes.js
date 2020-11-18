@@ -3,8 +3,7 @@ import React, {useState, useEffect} from 'react';
 import {getRecipes} from '../api/jsonPlaceholder';
 import RecipeCard from './RecipeCard';
 
-import Cover from "../images/healthyfood.jpg";
-import Loader from "../images/loader.gif";
+import Loader from '../images/loader.gif';
 
 function AllRecipes() {
   const [recipes, setRecipes] = useState([]);
@@ -30,7 +29,7 @@ function AllRecipes() {
 
   return (    
         <div>
-          <div class="alert alert-info" role="alert">
+          <div className="alert alert-info" role="alert">
             All recipes
           </div>
           <div className="row m-2">

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 function RecipeCard(props) {
@@ -12,12 +12,15 @@ function RecipeCard(props) {
                     <h5 class="card-title">{props.recipe.label}</h5>
                     <p class="card-text">Source: {props.recipe.source}</p>
                     <p class="card-text">Prep Time: {props.recipe.totalTime}</p>
-                    <a href="#" class="btn btn-info btn-block">More Details</a>
+                    <p class="card-text">Servings: {props.recipe.yield}</p>
+                    <p class="card-text">Calories: {props.recipe.calories}</p>
+                    <Link class="btn btn-info btn-block" to={`/recipepage/${props.recipe.label}`}>More Details</Link>
                 </div>
             </div>
         </div>  
       );
     }
+    
           
 
   
