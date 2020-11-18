@@ -2,27 +2,19 @@ import React from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 
 function RcipePage() {
-        const {label} = useParams();
-        const history = useHistory();
+    const {label} = useParams();
+    const history = useHistory();
 
-        const recipes = JSON.parse(localStorage.getItem('recipes')); 
-        const recipe = recipes.find(element => element.recipe.label === label).recipe;
-        
-        const goToHomepage = () => {
-            history.push("/");
-        }
-      
-        const goToAboutPage = () => {
-            history.push("/all-recipes");
-        }
-        
-        // return (
-        //   <div className="mt-5"> 
-        //      <button onClick={goToHomepage}>Go to Home page</button>
-        //     <button onClick={goToAboutPage}>Go to All Recipes</button>
-        //     <h1 >{recipe.recipe.label}</h1>
-           
-        //   </div>
+    const recipes = JSON.parse(localStorage.getItem('recipes')); 
+    const recipe = recipes.find(element => element.recipe.label === label).recipe;
+    
+    const goToHomepage = () => {
+        history.push("/");
+    }
+    
+    const goToAboutPage = () => {
+        history.push("/all-recipes");
+    }
 
     return (
         <div className="container-fluid">
