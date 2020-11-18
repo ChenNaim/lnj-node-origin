@@ -6,9 +6,8 @@ function RcipePage() {
         const history = useHistory();
       
         const recipes = JSON.parse(localStorage.getItem('recipes')); 
-        const recipe = recipes.find((recipe) => recipe.label == label);
+        const recipe = recipes.find((recipe) => recipe.label === label);
         
-      
         const goToHomepage = () => {
             history.push("/");
         }
@@ -17,7 +16,6 @@ function RcipePage() {
             history.push("/all-recipes");
         }
         
-
         return (
           <div className="mt-5"> 
              <button onClick={goToHomepage}>Go to Home page</button>
